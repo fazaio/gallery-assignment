@@ -1,5 +1,8 @@
 const album = require('../model/album')
+const photo = require('../model/photo')
 
+
+// ------ Controler Album ----------- //
 async function createAlbums(req, res) {
     try {
         await album.create(req.body)
@@ -31,17 +34,14 @@ function updateAlbums(req, res) {
     res.send('edit')
 }
 
-function update(req, res) {
-    res.send('update')
-}
-
-function upload(req, res) {
-    res.send('upload')
-}
-
-function remove(req, res) {
-    res.send('remove')
+// ------ Controler Photo ----------- //
+async function createPhoto(req, res) {
+    try {
+        await photo.create(req.body)
+    } catch (e) {
+        res.send('error!')
+    }
 }
 
 
-export { createAlbums, updateAlbums, removeAlbums, readAlbums, update, remove, upload }
+export { createAlbums, updateAlbums, removeAlbums, readAlbums, createPhoto }

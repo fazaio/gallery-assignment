@@ -1,6 +1,6 @@
 import express from 'express';
 // import db from '../config/db';
-const controler = require('../controllers/admin.controller')
+const controller = require('../controllers/admin.controller')
 const routerAdmin = express.Router();
 
 routerAdmin.get('/', function (req, res) {
@@ -8,14 +8,11 @@ routerAdmin.get('/', function (req, res) {
 })
 
 
-routerAdmin.get('/albums', controler.readAlbums)
-routerAdmin.post('/albums', controler.createAlbums)
-routerAdmin.delete('/albums', controler.removeAlbums)
-routerAdmin.put('/albums', controler.updateAlbums)
+routerAdmin.get('/albums', controller.readAlbums)
+routerAdmin.post('/albums', controller.createAlbums)
+routerAdmin.delete('/albums', controller.removeAlbums)
+routerAdmin.put('/albums', controller.updateAlbums)
 
-routerAdmin.post('/upload', controler.upload)
-routerAdmin.put('/update', controler.update)
-routerAdmin.get('/delete', controler.remove)
-
+routerAdmin.get('/photo', controller.createPhoto)
 
 module.exports = routerAdmin
