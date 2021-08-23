@@ -37,9 +37,10 @@ function updateAlbums(req, res) {
 // ------ Controler Photo ----------- //
 async function createPhoto(req, res) {
     try {
-        await photo.create(req.body)
+        res.send('uploaded!')
     } catch (e) {
-        res.send('error!')
+        console.log('error');
+        res.send(e)
     }
 }
 
