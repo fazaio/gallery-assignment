@@ -1,5 +1,6 @@
 import express from 'express';
 
+const auth = require('../middlewares/auth')
 const controller = require('../controllers/admin.controller')
 const routerAdmin = express.Router();
 
@@ -19,14 +20,16 @@ routerAdmin.get('/', function (req, res) {
 })
 
 
-routerAdmin.get('/albums', controller.readAlbums)
-routerAdmin.post('/albums', controller.createAlbums)
-routerAdmin.delete('/albums', controller.removeAlbums)
-routerAdmin.put('/albums', controller.updateAlbums)
+routerAdmin.get('/albums', auth, controller.readAlbums)
+routerAdmin.post('/albums', auth, controller.createAlbums)
+routerAdmin.delete('/albums', auth, controller.removeAlbums)
+routerAdmin.put('/albums', auth, controller.updateAlbums)
 
-routerAdmin.get('/photo', controller.readPhoto)
-routerAdmin.post('/photo', upload.single('avatar'), controller.createPhoto)
-routerAdmin.put('/photo', controller.updatePhoto)
-routerAdmin.delete('/photo', controller.removePhoto)
+routerAdmin.get('/photo', auth, controller.readPhoto)
+routerAdmin.post('/photo', auth,upload.single('avatar'), controller.createPhoto)
+routerAdmin.put('/photo', auth, controller.updatePhoto)
+routerAdmin.delete('/photo', auth, controller.removePhoto)
+
+routerAdmin.post('/auth', controller.signIn)
 
 module.exports = routerAdmin

@@ -1,5 +1,6 @@
 const album = require('../model/album')
 const photo = require('../model/photo')
+const user = require('../model/user')
 
 
 // ------ Controler Album ----------- //
@@ -69,7 +70,18 @@ async function updatePhoto(req, res) {
     }
 }
 
+// ------------- Auth --------------- //
+
+async function signIn(req, res) {
+    try {
+        const data = await user.signIn(req.body)
+        res.send(data)
+    } catch (e) {
+        res.send(e)
+    }
+}
 
 
 
-export { createAlbums, updateAlbums, removeAlbums, readAlbums, createPhoto, readPhoto, removePhoto, updatePhoto }
+
+export { createAlbums, updateAlbums, removeAlbums, readAlbums, createPhoto, readPhoto, removePhoto, updatePhoto, signIn }
