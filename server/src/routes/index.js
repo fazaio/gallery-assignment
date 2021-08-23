@@ -1,4 +1,4 @@
 module.exports = {
-    data : require('./data'),
+    api : require('./api'),
     admin : require('./admin'),
  }

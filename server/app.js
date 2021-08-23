@@ -7,7 +7,7 @@ const auth = require('./src/middlewares/auth')
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use('/data', router.data)
+app.use('/api', router.api)
 app.use('/admin', auth , router.admin)
 
 app.listen(5000,() => {

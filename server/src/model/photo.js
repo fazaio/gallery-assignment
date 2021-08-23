@@ -12,7 +12,7 @@ const create = (data) => {
 
 const all = () => {
   return new Promise((resolve, reject) => {
-    db.query(`SELECT * FROM albums`, (err, res) => {
+    db.query(`SELECT * FROM photos`, (err, res) => {
       if (err) reject('error!')
       resolve(res)
     })
@@ -21,7 +21,7 @@ const all = () => {
 
 const remove = (name) => {
   return new Promise((resolve, reject) => {
-    db.query(`DELETE FROM albums WHERE name = '${name}'`, (err, res) => {
+    db.query(`DELETE FROM photos WHERE name = '${name}'`, (err, res) => {
       if (err) reject('error')
       resolve('removed!')
     })

@@ -43,5 +43,32 @@ async function createPhoto(req, res) {
     }
 }
 
+async function readPhoto(req, res) {
+    try {
+        const data = await photo.all()
+        res.send(data)
+    } catch (e) {
+        res.send('error!')
+    }
+}
 
-export { createAlbums, updateAlbums, removeAlbums, readAlbums, createPhoto }
+async function removePhoto(req, res) {
+    try {
+        await photo.remove(req.body)
+    } catch (e) {
+        res.send('error!')
+    }
+}
+
+async function updatePhoto(req, res) {
+    try {
+        await photo.update(req.body)
+    } catch (e) {
+        res.send('error!')
+    }
+}
+
+
+
+
+export { createAlbums, updateAlbums, removeAlbums, readAlbums, createPhoto, readPhoto, removePhoto, updatePhoto }
