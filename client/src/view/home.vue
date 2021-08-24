@@ -1,5 +1,6 @@
 <template>
   <div>
+    <top-bar :status="'login'" />
     <div class="py-2 my-2">
       <input
         v-model="find"
@@ -17,6 +18,7 @@
 
 <script>
 import cardImage from "../components/cardImage.vue";
+import topBar from "../components/topBar.vue";
 export default {
   data() {
     return {
@@ -24,7 +26,7 @@ export default {
       find: "",
     };
   },
-  components: { cardImage },
+  components: { cardImage, topBar },
   computed: {
     filter() {
       var data = this.data;

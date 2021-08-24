@@ -6,7 +6,7 @@ const signIn = (data) => {
     return new Promise((resolve, reject) => {
         db.query(`SELECT * FROM users WHERE username = ?`, [data.username], (err, res) => {
             if (err || res.length != 1) {
-                reject ('errorss!')
+                reject ('username/passwor failed')
             } else {
                 bcrypt.compare(data.password, res[0].password, function (err, res) {
                     if (!res) reject('username/passwor failed')

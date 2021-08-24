@@ -1,7 +1,7 @@
 <template>
   <div class="p-5 shadow rounded bg-white">
     <div class="py-2">
-      <!-- <img :src="data.thumbnailUrl" /> -->
+      <img :src="data.url" />
       <span class="font-bold">Title:</span>
       {{ data.title }}
     </div>

@@ -48,7 +48,7 @@ export default {
         .post("/admin/auth", this.data)
         .then((res) => {
           localStorage.setItem("token", res.data);
-          this.response = localStorage.getItem("token");
+          this.$router.push("/dashboard");
         })
         .catch((e) => (this.response = e));
     },
