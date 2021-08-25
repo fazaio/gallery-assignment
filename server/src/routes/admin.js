@@ -26,9 +26,9 @@ routerAdmin.delete('/albums', auth, controller.removeAlbums)
 routerAdmin.put('/albums', auth, controller.updateAlbums)
 
 routerAdmin.get('/photo', auth, controller.readPhoto)
-routerAdmin.post('/photo', auth,upload.single('avatar'), controller.createPhoto)
+routerAdmin.post('/photo', auth, controller.createPhoto)
 routerAdmin.put('/photo/:id', auth, controller.updatePhoto)
-routerAdmin.delete('/photo', auth, controller.removePhoto)
+routerAdmin.delete('/photo/:id', auth, controller.removePhoto)
 
 routerAdmin.post('/auth', controller.signIn)
 

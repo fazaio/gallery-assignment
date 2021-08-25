@@ -6,6 +6,19 @@
         <sidebars />
       </div>
       <div class="col-span-5 p-4 shadow rounded bg-white">
+        <div class="overflow-auto my-3">
+          <div class="float-left">
+            <div class="py-1 font-bold">Photos:</div>
+          </div>
+          <div class="float-right">
+            <button
+              @click="$router.push('/dashboard/photos/create')"
+              class="px-2 py-1 text-sm bg-indigo-400 rounded"
+            >
+              + new
+            </button>
+          </div>
+        </div>
         <data-table :data="data" />
       </div>
     </div>

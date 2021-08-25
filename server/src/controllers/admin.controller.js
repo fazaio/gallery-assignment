@@ -41,15 +41,14 @@ async function detailPhoto(req, res) {
         const data = await photo.detail()
         res.send(data)
     } catch (e) {
-        console.log('error');
-        res.send(e)
+        res.send('error!')
     }
 }
 async function createPhoto(req, res) {
     try {
-        res.send('uploaded!')
+        const data = await photo.create(req.body)
+        res.send(data)
     } catch (e) {
-        console.log('error');
         res.send(e)
     }
 }
@@ -65,7 +64,8 @@ async function readPhoto(req, res) {
 
 async function removePhoto(req, res) {
     try {
-        await photo.remove(req.body)
+        const data = await photo.remove(req.params.id)
+        res.send(data)
     } catch (e) {
         res.send('error!')
     }

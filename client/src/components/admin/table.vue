@@ -1,5 +1,6 @@
 <template>
   <div>
+    <span class="text-sm text-gray-300">{{ response }}</span>
     <div class="mb-5">
       <input
         class="border outline-none w-full p-2 rounded"
@@ -27,8 +28,14 @@
           </td>
           <td class="p-1 border-bottom">{{ row.url }}</td>
           <td class="p-1 border-bottom text-xs text-gray-500">
-            <span class="cursor-pointer">Remove | </span>
-            <span class="cursor-pointer">Edit </span>
+            <span @click="remove(row.id)" class="cursor-pointer"
+              >Remove |
+            </span>
+            <span
+              @click="$router.push(`/dashboard/photos/edit/${row.id}`)"
+              class="cursor-pointer"
+              >Edit
+            </span>
           </td>
         </tr>
       </tbody>
@@ -39,6 +46,26 @@
 <script>
 export default {
   props: ["data"],
+  data() {
+    return {
+      response: "",
+    };
+  },
+  methods: {
+    remove(id) {
+      const head = {
+        "Content-Type": "application/json",
+        Authorization: localStorage.getItem("token"),
+      };
+      this.axios
+        .delete(`/admin/photo/${id}`, { headers: head })
+        .then((res) => {
+          this.response = res.data;
+          window.location.reload();
+        })
+        .catch((e) => (this.response = e));
+    },
+  },
 };
 </script>
 

@@ -2,10 +2,10 @@ import db from '../config/db';
 
 const create = (data) => {
     return new Promise((resolve, reject)=> {
-        const sql = `INSERT INTO albums SET ?`
+        const sql = `INSERT INTO photos SET ?`
           db.query(sql, data, (err, res) => {
-          if (err) reject('erros')
-          resolve('success!')
+          if (err) reject(err)
+          resolve('created!')
         })
     })
 }
@@ -19,9 +19,9 @@ const all = () => {
   })
 }
 
-const remove = (name) => {
+const remove = (id) => {
   return new Promise((resolve, reject) => {
-    db.query(`DELETE FROM photos WHERE name = '${name}'`, (err, res) => {
+    db.query(`DELETE FROM photos WHERE id = '${id}'`, (err, res) => {
       if (err) reject('error')
       resolve('removed!')
     })
