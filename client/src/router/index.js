@@ -4,6 +4,7 @@ import user from '@/view/dashboard/index.vue'
 import auth from '@/view/auth.vue'
 import albums from '@/view/dashboard/albums/index.vue'
 import isAuth from '@/middleware/auth.js'
+import photosEdit from '@/view/dashboard/photos/edit.vue'
 
 const routes = [
     {
@@ -30,6 +31,11 @@ const routes = [
         path: '/dashboard/albums',
         name: 'albums',
         component: albums
+    },
+    {
+        path: '/dashboard/photos/edit/:id',
+        name: 'photosEdit',
+        component: photosEdit
     }
 ]
 

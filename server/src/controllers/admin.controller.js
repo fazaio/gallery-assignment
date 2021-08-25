@@ -36,6 +36,15 @@ function updateAlbums(req, res) {
 }
 
 // ------ Controler Photo ----------- //
+async function detailPhoto(req, res) {
+    try {
+        const data = await photo.detail()
+        res.send(data)
+    } catch (e) {
+        console.log('error');
+        res.send(e)
+    }
+}
 async function createPhoto(req, res) {
     try {
         res.send('uploaded!')
@@ -64,7 +73,8 @@ async function removePhoto(req, res) {
 
 async function updatePhoto(req, res) {
     try {
-        await photo.update(req.body)
+        const data = await photo.update(req.params.id, req.body)
+        res.send(data)
     } catch (e) {
         res.send('error!')
     }
@@ -84,4 +94,4 @@ async function signIn(req, res) {
 
 
 
-export { createAlbums, updateAlbums, removeAlbums, readAlbums, createPhoto, readPhoto, removePhoto, updatePhoto, signIn }
+export { createAlbums, updateAlbums, removeAlbums, readAlbums, detailPhoto, createPhoto, readPhoto, removePhoto, updatePhoto, signIn }

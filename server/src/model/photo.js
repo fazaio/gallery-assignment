@@ -28,14 +28,23 @@ const remove = (name) => {
   })
 }
 
-const update = (id) => {
+const update = (id, data) => {
     return new Promise((resolve, reject) => {
-        db.query(`UPDATE photos SET ? where id = '${id}'`, (err, res) => {
+        db.query(`UPDATE photos SET ? where id = '${id}'`, data,(err, res) => {
             if (err) reject('error!')
             resolve('updated!')
         })
     })
 }
 
+const detail = (id) => {
+    return new Promise((resolve, reject) => {
+        db.query(`SELECT * FROM photos WHERE id = '${id}'`,(err, res) => {
+            if (err) reject('error!')
+            resolve(res)
+        })
+    })
+}
 
-export {create, all, remove, update}
+
+export {create, all, remove, update, detail}

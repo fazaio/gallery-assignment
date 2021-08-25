@@ -42,7 +42,6 @@ export default {
       .get("/api/photos")
       .then((res) => {
         this.data = res.data;
-        console.log(this.data);
       })
       .catch((e) => (this.data = e));
   },
