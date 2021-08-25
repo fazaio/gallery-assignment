@@ -29,7 +29,6 @@ const detail = (x) => {
 }
 
 const uncategorized = () => {
-  console.log('tes');
   return new Promise((resolve, reject) => {
     db.query(`SELECT * FROM photos WHERE albumId IS NULL`, (err, res) => {
       if (err) reject(err)
@@ -51,8 +50,8 @@ const remove = (id) => {
 
 const lastAlbumId = () => {
   return new Promise((resolve, reject) => {
-    db.query(`SELECT * FROM photos ORDER BY albumsId DESC LIMIT 0, 1`, (err, res) => {
-      if (err) reject('error')
+    db.query(`SELECT * FROM photos ORDER BY albumId DESC LIMIT 0, 1`, (err, res) => {
+      if (err) reject(err)
       resolve(res)
     })
   })

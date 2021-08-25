@@ -8,9 +8,9 @@ const user = require('../model/user')
 async function lastAlbumsId(req, res) {
     try {
         const data = await album.lastAlbumId()
-        res.send(data)
+        res.send(data[0])
     } catch (e) {
-        res.send('errors!')
+        res.send('error!')
     }
 }
 
