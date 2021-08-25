@@ -4,6 +4,16 @@ const user = require('../model/user')
 
 
 // ------ Controler Album ----------- //
+
+async function lastAlbumsId(req, res) {
+    try {
+        const data = await album.lastAlbumId()
+        res.send(data)
+    } catch (e) {
+        res.send('errors!')
+    }
+}
+
 async function createAlbums(req, res) {
     try {
         await album.create(req.body)
@@ -95,4 +105,4 @@ async function signIn(req, res) {
 
 
 
-export { createAlbums, updateAlbums, removeAlbums, readAlbums, detailPhoto, createPhoto, readPhoto, removePhoto, updatePhoto, signIn }
+export { createAlbums, updateAlbums, removeAlbums, readAlbums, detailPhoto, createPhoto, readPhoto, removePhoto, updatePhoto, signIn, lastAlbumsId }

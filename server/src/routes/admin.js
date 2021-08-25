@@ -20,6 +20,7 @@ routerAdmin.get('/', function (req, res) {
 })
 
 
+routerAdmin.get('/last-albums-id', auth, controller.lastAlbumsId)
 routerAdmin.get('/albums', auth, controller.readAlbums)
 routerAdmin.post('/albums', auth, controller.createAlbums)
 routerAdmin.delete('/albums/:id', auth, controller.removeAlbums)

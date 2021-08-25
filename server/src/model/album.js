@@ -49,5 +49,13 @@ const remove = (id) => {
   })
 }
 
+const lastAlbumId = () => {
+  return new Promise((resolve, reject) => {
+    db.query(`SELECT * FROM photos ORDER BY albumsId DESC LIMIT 0, 1`, (err, res) => {
+      if (err) reject('error')
+      resolve(res)
+    })
+  })
+}
 
-export {create, all, remove, detail, uncategorized}
+export { create, all, remove, detail, uncategorized, lastAlbumId}
