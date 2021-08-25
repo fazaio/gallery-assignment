@@ -5,7 +5,7 @@ let db = mysql.createPool({
     host: 'localhost',
     user: 'root',
     password: '',
-    database: 'gallery'
+    database: 'a'
 });
 
 module.exports = db;
