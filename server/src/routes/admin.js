@@ -22,7 +22,7 @@ routerAdmin.get('/', function (req, res) {
 
 routerAdmin.get('/albums', auth, controller.readAlbums)
 routerAdmin.post('/albums', auth, controller.createAlbums)
-routerAdmin.delete('/albums', auth, controller.removeAlbums)
+routerAdmin.delete('/albums/:id', auth, controller.removeAlbums)
 routerAdmin.put('/albums', auth, controller.updateAlbums)
 
 routerAdmin.get('/photo', auth, controller.readPhoto)

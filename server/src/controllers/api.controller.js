@@ -11,15 +11,6 @@ async function detailPhoto(req, res) {
     }
 }
 
-async function readAlbums(req, res) {
-    try {
-        const data = await album.all()
-        res.send(data)
-    } catch (e) {
-        res.send('errors!')
-    }
-}
-
 async function readPhoto(req, res) {
     try {
         const data = await photo.all()
@@ -29,4 +20,34 @@ async function readPhoto(req, res) {
     }
 }
 
-export {readAlbums, readPhoto, detailPhoto}
+async function readAlbums(req, res) {
+    try {
+        const data = await album.all()
+        res.send(data)
+    } catch (e) {
+        res.send('errors!')
+    }
+}
+
+async function detailAlbum(req, res) {
+    try {
+        const data = await album.detail(req.params.id)
+        res.send(data)
+    } catch (e) {
+        res.send(e)
+    }
+}
+
+async function albumsUncategorized(req, res) {
+    try {
+        const data = await album.uncategorized()
+        res.send(data)
+    } catch (e) {
+        res.send('errors!')
+    }
+}
+
+
+
+
+export {readAlbums, readPhoto, detailPhoto, detailAlbum, albumsUncategorized}

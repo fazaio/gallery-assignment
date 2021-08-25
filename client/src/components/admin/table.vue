@@ -20,7 +20,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr class="border" v-for="row in data" :key="row.id" :data="row">
+        <tr class="border" v-for="row in filter" :key="row.id" :data="row">
           <td class="p-1 text-center border-bottom">{{ row.id }}</td>
           <td class="p-1 border-bottom">{{ row.title.slice(0, 20) }}. . .</td>
           <td class="p-1 border-bottom">
@@ -48,8 +48,19 @@ export default {
   props: ["data"],
   data() {
     return {
+      find: "",
       response: "",
     };
+  },
+  computed: {
+    filter() {
+      var data = this.data;
+      const allowed = this.find;
+      if ("" !== allowed) {
+        return data.filter((e) => e.title.includes(allowed));
+      }
+      return data;
+    },
   },
   methods: {
     remove(id) {

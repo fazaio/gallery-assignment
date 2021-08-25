@@ -24,7 +24,8 @@ async function readAlbums(req, res) {
 
 async function removeAlbums(req, res) {
     try {
-        await album.remove()
+        await album.remove(req.params.id)
+        console.log(req.params.id);
         res.send('success')
     } catch (e) {
         res.send('errors!')
@@ -87,7 +88,7 @@ async function signIn(req, res) {
         const data = await user.signIn(req.body)
         res.send(data)
     } catch (e) {
-        res.send(e)
+        res.status(401).send(e)
     }
 }
 

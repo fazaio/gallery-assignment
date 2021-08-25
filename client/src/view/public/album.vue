@@ -9,17 +9,7 @@
         class="outline-none w-full p-2 rounded"
       />
     </div>
-    <div class="my-2">
-      Albums:
-      <button
-        @click="$router.push(`/album/${row.albumId}`)"
-        class="p-2 m-2 bg-white shadow"
-        v-for="(row, i) in dataAlbums"
-        :key="i"
-      >
-        <span v-html="album(row.albumId)"></span>
-      </button>
-    </div>
+    <div class="my-2">Albums: {{ $route.params.id }}</div>
     <div class="grid grid-cols-3 gap-4">
       <cardImage v-for="row in filter" :key="row.id" :data="row" />
     </div>
@@ -27,8 +17,8 @@
 </template>
 
 <script>
-import cardImage from "../components/cardImage.vue";
-import topBar from "../components/topBar.vue";
+import cardImage from "@/components/cardImage.vue";
+import topBar from "@/components/topBar.vue";
 export default {
   data() {
     return {
@@ -49,23 +39,14 @@ export default {
     },
   },
   created() {
-    this.allphoto();
     this.allAlbum();
   },
   methods: {
-    allphoto() {
-      this.axios
-        .get("/api/photos")
-        .then((res) => {
-          this.data = res.data;
-        })
-        .catch((e) => (this.data = e));
-    },
     allAlbum() {
       this.axios
-        .get("/api/albums")
+        .get(`api/albums/${this.$route.params.id}`)
         .then((res) => {
-          this.dataAlbums = res.data;
+          this.data = res.data;
         })
         .catch((e) => (this.data = e));
     },

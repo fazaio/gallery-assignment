@@ -50,7 +50,7 @@ export default {
           localStorage.setItem("token", res.data);
           this.$router.push("/dashboard");
         })
-        .catch((e) => (this.response = e));
+        .catch((e) => (this.response = e.response.data));
     },
   },
 };

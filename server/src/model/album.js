@@ -12,16 +12,37 @@ const create = (data) => {
 
 const all = () => {
   return new Promise((resolve, reject) => {
-    db.query(`SELECT * FROM albums`, (err, res) => {
+    db.query(`SELECT DISTINCT albumId FROM photos`, (err, res) => {
       if (err) reject('error!')
       resolve(res)
     })
   })
 }
 
-const remove = (name) => {
+const detail = (x) => {
   return new Promise((resolve, reject) => {
-    db.query(`DELETE FROM albums WHERE name = '${name}'`, (err, res) => {
+    db.query(`SELECT * FROM photos WHERE albumId = ?`, x, (err, res) => {
+      if (err) reject(err)
+      resolve(res)
+    })
+  })
+}
+
+const uncategorized = () => {
+  console.log('tes');
+  return new Promise((resolve, reject) => {
+    db.query(`SELECT * FROM photos WHERE albumId IS NULL`, (err, res) => {
+      if (err) reject(err)
+      resolve(res)
+    })
+  })
+}
+
+
+
+const remove = (id) => {
+  return new Promise((resolve, reject) => {
+    db.query(`DELETE FROM photos WHERE albumId = '${id}'`, (err, res) => {
       if (err) reject('error')
       resolve('removed!')
     })
@@ -29,4 +50,4 @@ const remove = (name) => {
 }
 
 
-export {create, all, remove}
+export {create, all, remove, detail, uncategorized}
