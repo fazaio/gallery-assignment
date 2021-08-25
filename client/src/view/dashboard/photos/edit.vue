@@ -32,6 +32,18 @@
               type="text"
             />
           </div>
+          <div class="my-3">
+            <div class="mr-2 inline">Move to Albums:</div>
+            <select v-model="data.albumId">
+              <option
+                v-for="(row, i) in AllAlbumId"
+                :key="i"
+                :value="row.albumId"
+              >
+                {{ row.albumId }}
+              </option>
+            </select>
+          </div>
           <button
             type="submit"
             class="mt-4 px-3 py-2 text-gray-200 rounded bg-indigo-400"
@@ -53,17 +65,21 @@ export default {
     return {
       data: "",
       response: "",
+      AllAlbumId: "",
     };
   },
   components: { topBar, sidebars },
   created() {
     this.get(this.$route.params.id);
+    this.getAlbumsId();
   },
   methods: {
     get(id) {
       this.axios
         .get(`/api/photo/${id}`)
-        .then((res) => (this.data = res.data[0]))
+        .then((res) => {
+          this.data = res.data[0];
+        })
         .catch((e) => console.log(e));
     },
     edit(id) {
@@ -74,6 +90,14 @@ export default {
       this.axios
         .put(`/admin/photo/${id}`, this.data, { headers: head })
         .then((res) => (this.response = res.data))
+        .catch((e) => (this.response = e));
+    },
+    getAlbumsId() {
+      this.axios
+        .get("/api/albums")
+        .then((res) => {
+          this.AllAlbumId = res.data;
+        })
         .catch((e) => (this.response = e));
     },
   },
