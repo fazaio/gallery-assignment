@@ -15,7 +15,7 @@ src/config/db.js
 ```
 4. Run this command to Create database
 ```
-> node ./src/utils/api-to-local-mysql.js 
+npm run createDb
 ```
 5. Start server
 ```
@@ -25,4 +25,4 @@ REST API run on http://localhost:5000
 
 
 ### Note:
-* If there any problem on migrate database, insert manual sql user `gallery.sql` by import in phpmyadmin.
+* If there any problem on `npm run createDb`, insert manual sql user `gallery.sql` by import in phpmyadmin.
