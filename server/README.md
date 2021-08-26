@@ -22,3 +22,7 @@ src/config/db.js
 npm start
 ```
 REST API run on http://localhost:5000
+
+
+### Note:
+* If there any problem on migrate database, insert manual sql user `gallery.sql` by import in phpmyadmin.
